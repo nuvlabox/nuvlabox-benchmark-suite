@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/sh -e
 
-[ ! -f /tmp/docker-bench-security ] && git clone https://github.com/docker/docker-bench-security.git /tmp/docker-bench-security
+[ ! -d /tmp/docker-bench-security-master ] && (wget https://github.com/docker/docker-bench-security/archive/master.zip -O /tmp/master.zip && \
+        unzip /tmp/master.zip -d /tmp)
 
-cd /tmp/docker-bench-security
+cd /tmp/docker-bench-security-master
 
 image_id=$(docker build . -q)
 
